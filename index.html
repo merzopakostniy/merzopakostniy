@@ -221,15 +221,18 @@
       .photo-inner {
         background: rgba(15, 23, 42, 0.9);
         border-radius: 18px;
-        min-height: 240px;
-        display: grid;
-        place-items: center;
-        color: var(--muted);
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: 600;
-        letter-spacing: 1px;
-        text-transform: uppercase;
+        height: 320px;
+        aspect-ratio: 3 / 4;
+        overflow: hidden;
         border: 1px solid rgba(148, 163, 184, 0.3);
+      }
+
+      .profile-photo {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        display: block;
       }
 
       .profile-name {
@@ -378,7 +381,9 @@
         <div class="panel fade-up delay-2">
           <div class="profile-card">
             <div class="photo-frame">
-              <div class="photo-inner">Фото</div>
+              <div class="photo-inner">
+                <img class="profile-photo" src="Mi.JPG" alt="Vitaliy Blyudenov" />
+              </div>
             </div>
             <div class="profile-note">Мобильные приложения · iOS · Android</div>
           </div>
