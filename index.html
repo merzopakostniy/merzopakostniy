@@ -3,9 +3,333 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Developer Site</title>
+    <title>Merzopakostniy — мобильные приложения</title>
+    <meta name="description" content="Разработчик мобильных приложений. Информация о разработчике и доступ к app-ads.txt." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-deep: #0b1221;
+        --bg-mid: #13263a;
+        --bg-light: #1b3a57;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --accent: #f59e0b;
+        --accent-2: #22c55e;
+        --card: rgba(15, 23, 42, 0.6);
+        --stroke: rgba(148, 163, 184, 0.2);
+        --shadow: 0 20px 50px rgba(2, 6, 23, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+        color: var(--text);
+        background: linear-gradient(135deg, var(--bg-deep), var(--bg-mid) 50%, var(--bg-light));
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: absolute;
+        width: 520px;
+        height: 520px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.35), transparent 70%);
+        filter: blur(10px);
+        z-index: 0;
+      }
+
+      body::before {
+        top: -200px;
+        right: -120px;
+      }
+
+      body::after {
+        bottom: -260px;
+        left: -160px;
+        background: radial-gradient(circle, rgba(34, 197, 94, 0.25), transparent 70%);
+      }
+
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(rgba(148, 163, 184, 0.12) 1px, transparent 1px);
+        background-size: 22px 22px;
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 64px 24px 96px;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 72px;
+      }
+
+      .brand {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        font-size: 20px;
+      }
+
+      .badge {
+        border: 1px solid var(--stroke);
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        color: var(--muted);
+        background: rgba(15, 23, 42, 0.5);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 48px;
+        align-items: center;
+        margin-bottom: 88px;
+      }
+
+      h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(36px, 4vw, 56px);
+        margin: 0 0 16px;
+        letter-spacing: -0.5px;
+      }
+
+      .lead {
+        font-size: 18px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .cta {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .button.primary {
+        background: var(--accent);
+        color: #0f172a;
+        box-shadow: 0 12px 28px rgba(245, 158, 11, 0.35);
+      }
+
+      .button.secondary {
+        border: 1px solid var(--stroke);
+        color: var(--text);
+        background: rgba(15, 23, 42, 0.55);
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 30px rgba(15, 23, 42, 0.4);
+      }
+
+      .panel {
+        background: var(--card);
+        border: 1px solid var(--stroke);
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .stat {
+        border: 1px solid var(--stroke);
+        border-radius: 14px;
+        padding: 16px;
+        background: rgba(15, 23, 42, 0.5);
+      }
+
+      .stat span {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        display: block;
+      }
+
+      .section-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 24px;
+        margin: 0 0 16px;
+      }
+
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        border: 1px solid var(--stroke);
+        border-radius: 16px;
+        padding: 18px;
+        background: rgba(15, 23, 42, 0.5);
+      }
+
+      .card h3 {
+        font-family: "Space Grotesk", sans-serif;
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .footer {
+        margin-top: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .fade-up {
+        animation: rise 0.8s ease forwards;
+        opacity: 0;
+        transform: translateY(14px);
+      }
+
+      .delay-1 { animation-delay: 0.1s; }
+      .delay-2 { animation-delay: 0.2s; }
+      .delay-3 { animation-delay: 0.3s; }
+
+      @keyframes rise {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+        }
+
+        .stats,
+        .cards {
+          grid-template-columns: 1fr;
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+
+        .footer {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+    </style>
   </head>
   <body>
-    Developer site
+    <div class="grid"></div>
+    <div class="container">
+      <header class="fade-up">
+        <div class="brand">Merzopakostniy</div>
+        <div class="badge">Developer • App Ads • GitHub Pages</div>
+      </header>
+
+      <section class="hero">
+        <div class="fade-up delay-1">
+          <h1>Мобильные приложения с характером</h1>
+          <p class="lead">
+            Здесь собрана базовая информация о разработчике и доступ к файлу
+            <strong>app-ads.txt</strong> для рекламных сетей. Сайт лёгкий, быстрый и
+            всегда доступный.
+          </p>
+          <div class="cta">
+            <a class="button primary" href="app-ads.txt">Открыть app-ads.txt</a>
+            <a class="button secondary" href="https://github.com/merzopakostniy">GitHub профиль</a>
+          </div>
+        </div>
+        <div class="panel fade-up delay-2">
+          <h2 class="section-title">Что здесь есть</h2>
+          <div class="stats">
+            <div class="stat">
+              <span>app-ads.txt</span>
+              Файл для верификации рекламы
+            </div>
+            <div class="stat">
+              <span>Проекты</span>
+              Мобильные и веб-приложения
+            </div>
+            <div class="stat">
+              <span>Контакты</span>
+              Через GitHub и сторы
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="fade-up delay-3">
+        <h2 class="section-title">Фокус</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>iOS и Android</h3>
+            <p>Приложения с чистым интерфейсом, быстрым запуском и стабильной работой.</p>
+          </div>
+          <div class="card">
+            <h3>Точность данных</h3>
+            <p>Упор на корректный контент, понятные ответы и минимальные ошибки.</p>
+          </div>
+          <div class="card">
+            <h3>Рекламная инфраструктура</h3>
+            <p>Готовность к монетизации и соблюдение стандартов app-ads.txt.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer fade-up delay-3">
+        <div>© 2026 Merzopakostniy</div>
+        <div>Сайт разработчика для магазинов приложений</div>
+      </footer>
+    </div>
   </body>
 </html>
