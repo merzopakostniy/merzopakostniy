@@ -193,6 +193,62 @@
         margin: 0 0 16px;
       }
 
+      .profile-card {
+        display: grid;
+        gap: 16px;
+      }
+
+      .photo-frame {
+        position: relative;
+        border-radius: 22px;
+        padding: 8px;
+        background: linear-gradient(135deg, rgba(245, 158, 11, 0.8), rgba(34, 197, 94, 0.6));
+        box-shadow: 0 18px 40px rgba(2, 6, 23, 0.45);
+      }
+
+      .photo-frame::after {
+        content: "";
+        position: absolute;
+        left: 14%;
+        right: 14%;
+        bottom: -14px;
+        height: 24px;
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.55), transparent 70%);
+        filter: blur(8px);
+        z-index: -1;
+      }
+
+      .photo-inner {
+        background: rgba(15, 23, 42, 0.9);
+        border-radius: 18px;
+        min-height: 240px;
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+      }
+
+      .profile-name {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+      }
+
+      .profile-note {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .footer a {
+        color: var(--text);
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(148, 163, 184, 0.4);
+      }
+
       .cards {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -272,7 +328,7 @@
     <div class="grid"></div>
     <div class="container">
       <header class="fade-up">
-        <div class="brand">Vitaliy Blyudenov</div>
+        <div class="brand">Developer</div>
         <div class="badge">Developer • App Ads • GitHub Pages</div>
       </header>
 
@@ -291,20 +347,12 @@
           </div>
         </div>
         <div class="panel fade-up delay-2">
-          <h2 class="section-title">Что здесь есть</h2>
-          <div class="stats">
-            <div class="stat">
-              <span>app-ads.txt</span>
-              Файл для верификации рекламы
+          <div class="profile-card">
+            <div class="photo-frame">
+              <div class="photo-inner">Фото</div>
             </div>
-            <div class="stat">
-              <span>Проекты</span>
-              Мобильные и веб-приложения
-            </div>
-            <div class="stat">
-              <span>Контакты</span>
-              Через GitHub и сторы
-            </div>
+            <div class="profile-name">Vitaliy Blyudenov</div>
+            <div class="profile-note">Мобильные приложения · iOS · Android</div>
           </div>
         </div>
       </section>
@@ -329,7 +377,10 @@
 
       <footer class="footer fade-up delay-3">
         <div>© 2026 Vitaliy Blyudenov</div>
-        <div>Сайт разработчика для магазинов приложений</div>
+        <div>
+          <a href="mailto:merzopakostniy@yandex.rub">merzopakostniy@yandex.rub</a>
+          · Сайт разработчика для магазинов приложений
+        </div>
       </footer>
     </div>
   </body>
